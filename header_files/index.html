@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!-- saved from url=(0086)http://s.codepen.io/boomerang/9044ec0fef6c27e396ab140688cb372b1480577279135/index.html -->
+<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths -webkit-"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script src="./console_runner-5710c30fb566082d9fcb6e7d97ee7e3f2a326128c9f334a4231b6fd752b29965.js.下載"></script><script src="./events_runner-d5e4bf42585b8da8c18f7d963dbfc17cd66a79aa586c9448c4de8d6952ee9d97.js.下載"></script><script src="./css_live_reload_init-25d1423d5d6fb975e7d61832d2c061422a94963ca446583b965dfc5569147311.js.下載"></script><meta name="robots" content="noindex"><link rel="shortcut icon" type="image/x-icon" href="http://production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico"><link rel="mask-icon" type="" href="http://production-assets.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111"><link rel="canonical" href="http://codepen.io/navidesigns/pen/anpkH">
+<script src="./modernizr.js.下載" type="text/javascript"></script>
+
+<link rel="stylesheet prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"><script src="./prefixfree.min.js.下載"></script>
+<link rel="stylesheet" type="text/css" href="header.css">
+</head>
+<body>
+<div class="megadropdown-bg" style="display: none;"></div>
+<header class="top">
+  <div class="container">
+  <section class="left">
+  <nav class="toplinks">
+  <ul>
+     <a href="#" class="logo">iHouse</a>
+    <li><a href="http://s.codepen.io/boomerang/9044ec0fef6c27e396ab140688cb372b1480577279135/index.html#">Login</a></li>
+    
+   
+    
+    
+  </ul>  
+  </nav>
+  <div class="search">
+    <i class="fa fa-search"></i>
+    <input type="text" placeholder="Search">
+    <div class="typeahead">
+      
+    </div>
+  </div>
+    </section>
+    
+    </section>
+    </div>
+</header>
+
+<script src="./stopExecutionOnTimeout-58d22c749295bca52f487966e382a94a495ac103faca9206cbd160bdf8aedf2a.js.下載"></script><script src="./jquery.min.js.下載"></script>
+<script>var $mega_menu = $('.mainnav > ul.left');
+var $mega_menu_items = $mega_menu.children('li');
+var $megamenu_overlay = $('.megadropdown-bg');
+$mega_menu_items.bind('mouseenter', function () {
+    var $this = $(this);
+    $this.addClass('slided on');
+}).bind('mouseleave', function () {
+    var $this = $(this);
+    $this.removeClass('on').children('div').css('z-index', '1');
+});
+$mega_menu.bind('mouseenter', function () {
+    var $this = $(this);
+    $megamenu_overlay.fadeIn();
+    $this.addClass('hovered');
+}).bind('mouseleave', function () {
+    var $this = $(this);
+    $this.removeClass('hovered');
+    $megamenu_overlay.fadeOut();
+});
+//# sourceURL=pen.js
+</script>
+</body>
+</html>
