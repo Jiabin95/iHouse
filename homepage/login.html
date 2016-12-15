@@ -1,0 +1,635 @@
+<html>
+<head>
+  <title>HS</title>
+  <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="fb.css">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://cdn.rawgit.com/olton/Metro-UI-CSS/master/build/css/metro-icons.min.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
+  <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+  <script type="text/javascript" src="login.js"></script>
+  <link rel="stylesheet" type="text/css" href="login.css">
+  <link rel="stylesheet" type="text/css" href="search.css">
+  <link type="text/css" rel="stylesheet" href="index.css">
+<script type="text/javascript" src="home.js"></script>
+<link rel="stylesheet" type="text/css" href="home.css">
+<link rel="stylesheet" type="text/css" href="header.css">
+	
+</head>
+<body>
+
+
+    <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+  <div id="fb-root"></div>
+
+
+  <nav class="navbar navbar-default head">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        
+        <h2 class="name">iHouse</h2>
+      </div>
+	 
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li><button  class="btn btn-primary" data-toggle="modal" data-target="#signin">Login</button></li>
+        </ul>
+      </div>
+    </div>
+  </nav>         
+
+    <div class="modal fade" id="signin" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title text-center">Login</h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+              <div class="col-md-6 formbor">
+                <div class="col-md-offset-1">
+                   <form method="post" name="signn" role="form" class="form-horizontal">
+                     <div class="form-group">
+                      <label for="email" class="col-md-3 control-label">Email:</label>
+                      <div class="col-md-8">
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Enter Your mail:" required>
+                      </div>
+                     </div>
+                     <div class="form-group">
+                           <label for="pass" class="col-md-3 control-label">Password:</label>
+                        <div class="col-md-8">
+                           <input type="password" class="form-control" name="pass" id="pass" Placeholder="Enter your Password:" required>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                       <label for="pass" class="col-md-3 control-label"></label>
+                       <div class="col-md-8">
+                          <p class="text-right"><a href="#">Forget Password ?</a></p>
+                       </div>
+                     </div>
+                     <input type="submit" value="signin" id="signin" class="btn btn-default center-block">
+                   </form>
+                  </div>
+              </div>
+              <div class="col-md-6 text-center">
+                <h3>Social network</h3>
+                <div class="row">
+                <div class="btn btn-lg fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="false"></div>
+              </div>
+                <div class="row">
+				 <button class="loginBtn loginBtn--facebook">
+					Login with Facebook
+				</button>
+                </div>
+                <div class="row">
+                  <div class="col-md-offset-3 g-signin2" data-width="200" data-height="30" data-longtitle="true">
+                </div>
+                <div class="row" style="margin-top:2%;">
+				<button class="loginBtn loginBtn--google">
+  Login with Google
+</button>
+                </div>
+              </div>
+            </div>
+        </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
+			  </div>
+			  </div>
+  </div>
+</div>
+<div class="wicked">
+      <div id="mgmenu1" class="mgmenu_container"><!-- Begin Mega Menu Container -->
+        <ul class="mgmenu"><!-- Begin Mega Menu -->
+            <li><span><i class="fa fa-home"></i>  Home</span><!-- Begin Item -->
+                <div class="dropdown_container dropdown_fullwidth mgmenu_tabs"><!-- Begin Item Container -->
+                    
+                    <!--<div class="mgmenu_tabs_panels">
+                        <div id="section1">
+                            <div class="col_12">
+                                <h3>News</h3>
+                                <hr>
+                            </div>
+                            <div class="col_4">
+                                <p class="text_box text_box_red">Mauris eu massa turpis, at blandit elit. Mauris rutrum placerat libero, ut rhoncus leo euismod non. Aliquam urna felis, rutrum eu rhoncus at, elementum id est.</p>
+                            </div>
+                            <div class="col_4">
+                                <p class="text_box text_box_blue">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis bibendum nunc dapibus posuere. Sed quis laoreet justo. Aliquam urna eu.</p>
+                            </div>
+                            <div class="col_4">
+                                <p class="text_box text_box_green">Aliquam urna felis, rutrum eu rhoncus at, elementum id est. Sed rutrum eu rhoncus at, elementum id est lacus purus, ullamcorper ut aliquet ut, dictum nec odio.</p>
+                            </div>
+                            <div class="col_4">
+                                <p class="text_box text_box_brown">Mauris eu massa turpis, at blandit elit. Mauris rutrum placerat libero, ut rhoncus leo euismod non. Aliquam urna felis, rutrum eu rhoncus at, elementum id est..</p>
+                            </div>
+                            <div class="col_4">
+                                <p class="text_box text_box_purple">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis bibendum nunc dapibus posuere. Sed quis laoreet justo. Aliquam urna felis.</p>
+                            </div>
+                            <div class="col_4">
+                                <p class="text_box text_box_yellow">Aliquam urna felis, rutrum eu rhoncus at, elementum id est. Sed rutrum eu rhoncus at, elementum id est lacus purus, ullamcorper ut aliquet ut, dictum nec odio..</p>
+                            </div>
+                            <hr>
+                            <div class="col_12">
+                                <p>Morbi volutpat pharetra tempor. Mauris dignissim eget nisl vel blandit. Nam pellentesque faucibus gravida. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas egestas, quam nec molestie.</p>
+                            </div>
+                        </div>
+                        <div id="section2" class="mgmenu_tabs_hide">
+                            <div class="col_12">
+                                <h3>SANEUX | UK</h3>
+                                <hr>
+                            </div>
+                            <div class="col_8">
+                                <p>Integer nisl nunc, venenatis sagittis condimentum vel, tincidunt in est. Aenean felis sem, suscipit in posuere ultrices, placerat vel ipsum. Donec quis dolor turpis, non accumsan nisl. Ut lorem turpis, consequat eget condimentum quis, consectetur vitae enim. Proin ultricies ornare nibh eget tincidunt. Nulla id lectus est. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras pharetra tincidunt erat sit amet sodales. Donec volutpat, leo lacinia facilisis semper, mauris nunc convallis enim, imperdiet volutpat urna nulla ut augue. Suspendisse potenti varius molestie.</p>
+                            </div>
+                            <div class="col_4">
+                                <p class="text_box text_box_black">Sed lacus purus, ullamcorper ut aliquet ut, dictum nec odio. Donec sed odio ac lectus fermentum accumsan quis ut magna. Sed consectetur ipsum dolor, non laoreet lectus. Phasellus malesuada.</p>
+                            </div>
+                        </div>
+                        <div id="section3" class="mgmenu_tabs_hide">
+                            <div class="col_12">
+                                <h3>Expert Advice</h3>
+                                <hr>
+                            </div>
+                            <div class="col_8">
+                                <p>Integer nisl nunc, venenatis sagittis condimentum vel, tincidunt in est. Aenean felis sem, suscipit in posuere ultrices, placerat vel ipsum. Donec quis dolor turpis, non accumsan nisl. Ut lorem turpis, consequat eget condimentum quis, consectetur vitae enim. Proin ultricies ornare nibh eget tincidunt. Nulla id lectus est. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras pharetra tincidunt erat sit amet sodales. Donec volutpat, leo lacinia facilisis semper, mauris nunc convallis enim, imperdiet volutpat urna nulla ut augue. Suspendisse potenti varius molestie.</p>
+                            </div>
+                            <div class="col_4">
+                                <p class="text_box text_box_black">Sed lacus purus, ullamcorper ut aliquet ut, dictum nec odio. Donec sed odio ac lectus fermentum accumsan quis ut magna. Sed consectetur ipsum dolor, non laoreet lectus. Phasellus malesuada.</p>
+                            </div>
+                        </div>
+                        <div id="section4" class="mgmenu_tabs_hide">
+                            <div class="col_12">
+                                <h3>Technical Support</h3>
+                                <hr>
+                            </div>
+                            <div class="col_3">
+                                <ul>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Codecanyon</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Themeforest</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Videohive</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Audiojungle</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Photodune</a></li>
+                                </ul>
+                            </div>
+                            <div class="col_3">
+                                <ul>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Nettuts</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Webdesigntuts</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">PSDtuts</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Vectortuts</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Audiotuts</a></li>
+                                </ul>
+                            </div>
+                            <div class="col_3">
+                                <ul>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Calendars</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Countdowns</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Forms</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Images</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Medias</a></li>
+                                </ul>
+                            </div>
+                            <div class="col_3">
+                                <ul>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Loaders</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Uploaders</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Navigation</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">News Tickets</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Charts</a></li>
+                                </ul>
+                            </div>
+                            <div class="col_12">
+                                <hr>
+                                <h4>Additional Categories</h4>
+                            </div>
+                            <div class="col_3">
+                                <ul>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Calendars</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Countdowns</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Forms</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Images</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Medias</a></li>
+                                </ul>
+                            </div>
+                            <div class="col_3">
+                                <ul>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Loaders</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Uploaders</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Navigation</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">News Tickets</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Charts</a></li>
+                                </ul>
+                            </div>                    
+                            <div class="col_3">
+                                <ul>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Codecanyon</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Themeforest</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Videohive</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Audiojungle</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Photodune</a></li>
+                                </ul>
+                            </div>
+                            <div class="col_3">
+                                <ul>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Nettuts</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Webdesigntuts</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">PSDtuts</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Vectortuts</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Audiotuts</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="section5" class="mgmenu_tabs_hide">
+                            <div class="col_12">
+                                <h3>Catalogues</h3>
+                                <hr>
+                            </div>
+                            <div class="col_3">
+                                <ul>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Codecanyon</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Themeforest</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Videohive</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Audiojungle</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Photodune</a></li>
+                                </ul>
+                            </div>
+                            <div class="col_3">
+                                <ul>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Nettuts</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Webdesigntuts</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">PSDtuts</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Vectortuts</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Audiotuts</a></li>
+                                </ul>
+                            </div>
+                            <div class="col_3">
+                                <ul>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Calendars</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Countdowns</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Forms</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Images</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Medias</a></li>
+                                </ul>
+                            </div>
+                            <div class="col_3">
+                                <ul>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Loaders</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Uploaders</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Navigation</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">News Tickets</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Charts</a></li>
+                                </ul>
+                            </div>
+                            <div class="col_12">
+                                <hr>
+                                <h4>Additional Categories</h4>
+                            </div>
+                            <div class="col_3">
+                                <ul>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Calendars</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Countdowns</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Forms</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Images</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Medias</a></li>
+                                </ul>
+                            </div>
+                            <div class="col_3">
+                                <ul>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Loaders</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Uploaders</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Navigation</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">News Tickets</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Charts</a></li>
+                                </ul>
+                            </div>                    
+                            <div class="col_3">
+                                <ul>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Codecanyon</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Themeforest</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Videohive</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Audiojungle</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Photodune</a></li>
+                                </ul>
+                            </div>
+                            <div class="col_3">
+                                <ul>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Nettuts</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Webdesigntuts</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">PSDtuts</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Vectortuts</a></li>
+                                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">Audiotuts</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+            </li>
+
+            <li><span>居家空間</span><!-- Begin Item -->
+                <div class="dropdown_container dropdown_fullwidth"><!-- Begin Item Container -->
+                    <div class="col_12">
+                      
+                                <h3>Accessories</h3>
+                                <hr>
+                            
+                    </div>
+                    <div class="col_2">
+                        <ul>
+                            <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">客廳</a></li>
+                            <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">浴室</a></li>
+                            <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">廚房</a></li>
+                            <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">書房</a></li>
+                        </ul>
+                    </div>
+                    <div class="col_2">
+                        <ul>
+                            <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">臥室</a></li>
+                            <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">餐廳</a></li>
+                            <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">陽台</a></li>
+                            <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">储藏室</a></li>
+                            
+                        </ul>
+                    </div>
+                   
+                    <div class="col_4">
+                    </div>
+                </div><!-- End Item Container -->
+            </li><li><span>家具</span><!-- Begin Item -->
+                <div class="dropdown_container dropdown_fullwidth"><!-- Begin Item Container -->
+                    <div class="col_4">
+                      <h5>Browse Videos By Range</h5>
+                      <hr>                           
+                    </div>
+                    <div class="col_8">
+                      <h5>Featured Videos | <a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html" class=""><i class="fa fa-youtube fa-lg"></i></a> | <a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html"><i class="fa fa-vimeo-square fa-lg"></i></a></h5>
+                      <hr>                           
+                    </div>
+                    <div class="col_2">
+                        <ul>
+                            <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">椅子</a></li>
+                            <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">櫃子</a></li>
+                            <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">桌子</a></li>
+                            <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">沙發</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="col_2">
+                        <ul>
+                            <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">檯燈</a></li>
+                            <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">DIY 家具</a></li>
+							 <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#">其他</a></li>
+                        </ul>
+                      
+                    </div>
+                    <div class="col_4">
+                      <a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#"><p class="img_description">Nicholson Range</p><p></p></a>
+                        <div class="video_container">
+                            <iframe src="./112986002.html" width="500" height="281" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe> <p><a href="http://vimeo.com/112986002">SANEUX | UK - MERCURY Taps &amp; Brassware Overview</a> from <a href="http://vimeo.com/user34801951">SANEUX | UK</a> on <a href="https://vimeo.com/">Vimeo</a>.</p>
+                        </div>
+                        
+                    </div>
+                    <div class="col_4">
+                      <a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#"><p class="img_description">Nicholson Range</p><p></p></a>
+                      <div class="video_container">
+                            <iframe src="./113581881.html" width="500" height="281" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe> <p><a href="http://vimeo.com/113581881">SANEUX | UK - NICHOLSON Taps &amp; Brassware Overview - Français</a> from <a href="http://vimeo.com/user34801951">SANEUX | UK</a> on <a href="https://vimeo.com/">Vimeo</a>.</p>
+                        </div>
+                    </div>
+
+                </div><!-- End Item Container -->
+            </li><!-- End Item -->
+            <li id="map"><span><i class="glyphicon glyphicon-user"></i>個人空間</span><!-- Begin Item -->
+                <div class="dropdown_container dropdown_6columns"><!-- Begin Item Container -->
+                    
+                </div><!-- End Item Container -->
+            </li><!-- End Item -->
+			<li class="right_item menubar_icon"><!-- Begin Item -->
+                <ul>
+                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#" class="icon_vimeo"></a></li>
+                    <li><a href="https://s.codepen.io/boomerang/04dd3b17485dcccb43f671f4aaf0b3881480870051229/index.html#" class="icon_youtube"></a></li>
+                </ul>
+            </li><!-- End Item -->
+        </ul><!-- End Mega Menu -->
+    </div><!-- End Mega Menu Container -->
+</div>	
+
+    <!-- Header Carousel -->
+    <header id="myCarousel" class="carousel slide">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+               <img class="slide" src="furniture1.jpg" style="">
+                <div class="carousel-caption">
+                    <h2>Caption 1</h2>
+                </div>
+            </div>
+            <div class="item">
+                <img class="slide" src="furniture2.jpg" style="">
+                <div class="carousel-caption">
+                    <h2>Caption 2</h2>
+                </div>
+            </div>
+            <div class="item">
+                <img class="slide" src="furniture3.jpg" style="">
+                <div class="carousel-caption">
+                    <h2>Caption 3</h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="icon-prev"></span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="icon-next"></span>
+        </a>
+    </header>
+
+    <!-- Page Content -->
+    
+        <!-- /.row -->
+
+        <!-- Portfolio Section -->
+        
+        <!-- /.row -->
+
+        <!-- Features Section -->
+       
+        <!-- /.row -->
+
+       
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Script to Activate the Carousel -->
+    <script>
+    $('.carousel').carousel({
+        interval: 5000 //changes the speed
+    })
+    </script>
+<article>
+  <p>客廳</p>
+  <figure>
+    <div>
+      <div id="G1"></div>
+      <div id="T1"> 
+        <p>客廳</p><a>用戶</a>
+      </div>
+    </div>
+    <div>
+      <div id="G2"></div>
+      <div id="T2">
+        <p>客廳2</p><a>用戶</a>
+      </div>
+    </div>
+    <div>
+      <div id="G3"></div>
+      <div id="T3">
+        <p>客廳3</p><a>用戶</a>
+      </div>
+    </div>
+  </figure>
+</article>
+<article>
+  <p>廚房</p>
+  <figure>
+    <div>
+      <div id="M1"></div>
+      <div id="T1"> 
+        <p>廚房1</p><a>用戶</a>
+      </div>
+    </div>
+    <div>
+      <div id="M2"></div>
+      <div id="T2">
+        <p>廚房2</p><a>全文</a>
+      </div>
+    </div>
+    <div>
+      <div id="M3"></div>
+      <div id="T3">
+        <p>廚房3</p><a>全文</a>
+      </div>
+    </div>
+  </figure>
+</article>
+<article>
+  <p>書房</p><a>更多</a>
+  <figure>
+    <div>
+      <div id="E1"></div>
+      <div id="T1"> 
+        <p>主管桌</p><a></a>
+      </div>
+    </div>
+    <div>
+      <div id="E2"></div>
+      <div id="T2">
+        <p>員工桌</p><a>全文</a>
+      </div>
+    </div>
+    <div>
+      <div id="E3"></div>
+      <div id="T3">
+        <p>翻頁椅</p><a>全文</a>
+      </div>
+    </div>
+  </figure>
+</article>
+<article>
+  <p>衛浴空間</p><a>更多</a>
+  <figure>
+    <div>
+      <div id="B1"></div>
+      <div id="T1"> 
+        <p>衛浴空間1</p><a>全文</a>
+      </div>
+    </div>
+    <div>
+      <div id="B2"></div>
+      <div id="T2">
+        <p>衛浴空間2</p><a>全文</a>
+      </div>
+    </div>
+    <div>
+      <div id="B3"></div>
+      <div id="T3">
+        <p>衛浴空間3</p><a>全文</a>
+      </div>
+    </div>
+  </figure>
+</article>
+<article>
+  <p>创意设计</p><a>更多</a>
+  <figure>
+    <div>
+      <div id="D1"></div>
+      <div id="T1"> 
+        <p>简约麋鹿墙饰</p><a>详情</a>
+      </div>
+    </div>
+    <div>
+      <div id="D2"></div>
+      <div id="T2">
+        <p>简约筑巢木质挂钟</p><a>详情</a>
+      </div>
+    </div>
+    <div>
+      <div id="D3"></div>
+      <div id="T3">
+        <p>层叠分类垃圾桶</p><a>详情</a>
+      </div>
+    </div>
+  </figure>
+</article>
+<article>
+  <p>写字楼宇</p><a>更多</a>
+  <figure>
+    <div>
+      <div id="R1"></div>
+      <div id="T1"> 
+        <p>SOHO复兴广场 SOHO Fuxing Plaza</p><a>详情</a>
+      </div>
+    </div>
+    <div>
+      <div id="R2"></div>
+      <div id="T2">
+        <p>新富港中心 New Rich Port</p><a>详情</a>
+      </div>
+    </div>
+    <div>
+      <div id="R3"></div>
+      <div id="T3">
+        <p>上海国金中心(Shanghai IFC)</p><a>详情</a>
+      </div>
+    </div>
+  </figure>
+</article>  
+</body>			  
+</html>
