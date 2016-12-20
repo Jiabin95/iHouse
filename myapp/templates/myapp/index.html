@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>myapp</title>
+	<title>iHouse</title>
 
   
   	<script src="{% static 'css/panelcss/console_runner-5710c30fb566082d9fcb6e7d97ee7e3f2a326128c9f334a4231b6fd752b29965.js.download' %}"></script>
@@ -53,7 +53,7 @@
 
 <div class="header">
 		<div>
-			<a href="index.html" id="logo"><img src="images/logo.png" alt="logo"></a>
+			<a href="{% url 'index'%}" id="logo"><img src="{% static 'images/homelogo1.png' %}" alt="logo"></a>
 			<ul>
 				<li class="selected">
 					<a href="index.html">Home</a>
@@ -258,8 +258,8 @@
       <li role="presentation" class="active"><a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#panel-1" aria-controls="panel-1" role="tab" data-toggle="tab">當日主題</a></li>
       <li role="presentation"><a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#panel-2" aria-controls="panel-2" role="tab" data-toggle="tab">熱門主題</a></li>
       <li role="presentation"><a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#panel-3" aria-controls="panel-3" role="tab" data-toggle="tab">Panel 3</a></li>
-      <li role="presentation"><a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#panel-4" aria-controls="panel-4" role="tab" data-toggle="tab">Panel 4</a></li>
-      <button class="btn-default"><a href="{% url 'upload' %}"> +上传居家</a></button>
+      <a href="{% url 'upload' %}">  <button type="button" class="btn btn-primary" style="float:right; width:80px; ">New Post</button></a>
+      
 	 </ul>
 	
     <!-- Tab panes -->
@@ -267,13 +267,13 @@
 
       <div role="tabpanel" class="tab-pane active" id="panel-1">
         <div class="row masonry-container" style="position: relative; height: 956px;">
-
+          
           <div class="col-md-4 col-sm-6 item" style="position: absolute; left: 0px; top: 0px;">
             <div class="thumbnail">
-              <img src="{% static 'css/panelcss/abstract' %}" alt="">
+              <img src="{% static 'images/fur2.jpg' %}" alt="">
               <div class="caption">
-                <h3>Thumbnail label</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+                <h3>瑞典的質感日常</h3>
+                <p>北歐風最讓人著迷之處便是那簡單中呈現的不凡氣質，當地有個有趣單字「hygge」便是在形容這份獨特，中文可以解釋成舒服、愜意，但其實就是指一種情境上的美好舒適... </p>
                 <p><a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#" class="btn btn-primary" role="button">Button</a> <a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#" class="btn btn-default" role="button">Button</a></p>
               </div>
             </div>
@@ -281,9 +281,10 @@
 
           <div class="col-md-4 col-sm-6 item" style="position: absolute; left: 390px; top: 0px;">
             <div class="thumbnail">
+              <img src="{% static 'images/fur3.jpg' %}" alt="">
               <div class="caption">
-                <h3>Thumbnail label</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, illum voluptates consectetur consequatur ducimus. Necessitatibus, nobis consequatur hic eaque laborum laudantium. Adipisci, explicabo, asperiores molestias deleniti unde dolore enim quas.</p>
+                <h3>北歐風質感公寓</h3>
+                <p>家應該是生活中帶給我們最多幸福感的地方，從打開家門那一刻起心情瞬間輕鬆愉悅，外面世界充斥著壓力加上煩悶工作，就跟著甩掉的鞋子、亂丟的包包一起拋到九霄雲外吧！.....</p>
                 <p><a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#" class="btn btn-primary" role="button">Button</a> <a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#" class="btn btn-default" role="button">Button</a></p>
               </div>
             </div>
@@ -291,47 +292,15 @@
 
           <div class="col-md-4 col-sm-6 item" style="position: absolute; left: 780px; top: 0px;">
             <div class="thumbnail">
-              <img src="{% static 'css/panelcss/abstract' %}" alt="">
+              <img src="{% static 'images/fur1.jpg' %}" alt="">
               <div class="caption">
-                <h3>Thumbnail label</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, illum voluptates consectetur consequatur ducimus. Necessitatibus, nobis consequatur hic eaque laborum laudantium. Adipisci, explicabo, asperiores molestias deleniti unde dolore enim quas.</p>
+                <h3>單身質男小宅</h3>
+                <p>在外打拼租屋的單身男士們都如何佈置你的住屋處呢？其中黑色搭上未過多加工的天然建材，同時表現了粗獷質感與舒適氛圍，便受到許多屋主們喜愛...</p>
                 <p><a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#" class="btn btn-primary" role="button">Button</a> <a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#" class="btn btn-default" role="button">Button</a></p>
               </div>
             </div>
           </div><!--/.item  -->
-
-          <div class="col-md-4 col-sm-6 item" style="position: absolute; left: 390px; top: 278px;">
-            <div class="thumbnail">
-              <img src="{% static 'css/panelcss/abstract' %}" alt="">
-              <div class="caption">
-                <h3>Thumbnail label</h3>
-                <p><a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#" class="btn btn-primary" role="button">Button</a> <a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#" class="btn btn-default" role="button">Button</a></p>
-              </div>
-            </div>
-          </div><!--/.item  -->
-
-          <div class="col-md-4 col-sm-6 item" style="position: absolute; left: 0px; top: 398px;">
-            <div class="thumbnail">
-              <img src="{% static 'css/panelcss/abstract' %}" alt="">
-              <div class="caption">
-                <h3>Thumbnail label</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, illum voluptates consectetur consequatur ducimus. Necessitatibus, nobis consequatur hic eaque laborum laudantium. Adipisci, explicabo, asperiores molestias deleniti unde dolore enim quas.</p>
-                <p><a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#" class="btn btn-primary" role="button">Button</a> <a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#" class="btn btn-default" role="button">Button</a></p>
-              </div>
-            </div>
-          </div><!--/.item  -->
-
-          <div class="col-md-4 col-sm-6 item" style="position: absolute; left: 780px; top: 478px;">
-            <div class="thumbnail">
-              <img src="{% static 'css/panelcss/abstract' %}" alt="">
-              <div class="caption">
-                <h3>Thumbnail label</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, illum voluptates consectetur consequatur ducimus. Necessitatibus, nobis consequatur hic eaque laborum laudantium. Adipisci, explicabo, asperiores molestias deleniti unde dolore enim quas.</p>
-                <p><a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#" class="btn btn-primary" role="button">Button</a> <a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#" class="btn btn-default" role="button">Button</a></p>
-              </div>
-            </div>
-          </div>
-
+          
         </div> <!--/.masonry-container  -->
       </div><!--/.tab-panel -->
 
