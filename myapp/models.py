@@ -14,3 +14,5 @@ class Contact(models.Model):
     
 class IMG(models.Model):
     img = models.ImageField(upload_to='upload')
+    tit = models.CharField(max_length=30)
+    des = models.CharField(max_length=200)

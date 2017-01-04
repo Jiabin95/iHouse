@@ -19,11 +19,22 @@ from django.contrib import admin
 from myapp import views
 from django.conf.urls.static import static
 from django.conf import settings
+from myapp.views import index, add
+from myapp.views import *
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$',views.index, name="index"),
-    url(r'^clickpic',views.add,name="add"),
+    url(r'^clickpic/(?P<pk>\d+)/$',views.add,name="add"),
+   # url(r'^clickpic/comment/(?P<pk>\d+)/$',views.comment,name="comment"),
     url(r'^upload', views.uploadImg, name="upload"),
+    
+    url(r'^$', 'django.contrib.auth.views.login'),
+    # url(r'^home/$', home, name = "home"),
+    url(r'^register/$', register),
+    # url(r'^register/success/$', register_success),
+    url(r'^login/$', 'django.contrib.auth.views.login'),
+    url(r'^logout/$', logout_page),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+# {% url "add" post.pk %} 

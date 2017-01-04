@@ -9,7 +9,7 @@ admin.site.register(Contact)
 
 # Register your models here.
 class imgtest(admin.ModelAdmin):
-    list_display = ['img']
+    list_display = ['id','img','tit','des']
     class Meta : 
         model = IMG
         

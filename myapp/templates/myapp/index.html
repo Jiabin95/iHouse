@@ -115,8 +115,14 @@
 				</li>
 
 				<li>
-				<img id="picture" src="">	
-				<button id="fb-login"onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+				{% if user.is_authenticated %}
+				<img id="picture" src="">
+				   <button id="fb-login"onclick="document.getElementById('id01').style.display='block'" style="width:auto;">{{ user.username }}</button>
+            
+        {% else %}
+        <img id="picture" src="">
+				   <button id="fb-login"onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+				{%endif%} 
 
 
 				</li>
@@ -183,28 +189,31 @@
             <div class="row">
               <div class="col-md-6 formbor">
                 <div class="col-md-offset-1">
-                   <form method="post" name="signn" role="form" class="form-horizontal">
-                     <div class="form-group">
-                      <label for="email" class="col-md-3 control-label">Email:</label>
-                      <div class="col-md-8">
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Enter Your mail:" required>
-                      </div>
-                     </div>
-                     <div class="form-group">
-                           <label for="pass" class="col-md-3 control-label">Password:</label>
-                        <div class="col-md-8">
-                           <input type="password" class="form-control" name="pass" id="pass" Placeholder="Enter your Password:" required>
-                        </div>
-                     </div>
-                     <div class="form-group">
-                       <label for="pass" class="col-md-3 control-label"></label>
-                       <div class="col-md-8">
-                          <p class="text-right"><a href="#">Forget Password ?</a></p>
-                       </div>
-                     </div>
-                     <input type="submit" value="signin" id="signin" class="btn btn-default center-block">
-					
-                   </form>
+                   {% block content %}
+    {% if form.errors %}
+        <p>Your username and password didn't match. Please try again.</p>
+    {% endif %}
+
+    <!--
+    <form method="post" action=".">{% csrf_token %}
+        <table border="0">
+            <tr><th><label for="id_username">Username:</label></th><td>{{ form.username }}</td></tr>
+            <tr><th><label for="id_password">Password:</label></th><td>{{ form.password }}</td></tr>
+        </table>
+        <input type="submit" value="Login" />
+        <input type="hidden" name="next" value="/home" />
+    </form>
+    <a href="/register">Register</a>
+-->
+    <form class="form" method="post" action="." >{% csrf_token %}
+        <input type="text" placeholder="Username" name="username">
+        <input type="password" placeholder="Password" name="password">
+        <button type="submit"  value="Login" id="login-button">Login</button>
+        <button type="button" onclick="window.location.href='/register/' ">Register</button>
+        
+    </form>
+
+{% endblock %}
                   </div>
               </div>
               <div class="col-md-6 text-center">
@@ -212,20 +221,7 @@
                 <div class="row">
                 <div class="btn btn-lg fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="false"></div>
               </div>
-                <div class="row">
-				        <button id="my-button" class="btn btn-primary login">Facebook Login</button>
-                <img id="my-profile-picture" class="img-rounded user-pic" src="">
-                <h5 id="user-name"></h5>
-                </div>
-                <div class="row">
-                  <div class="col-md-offset-3 g-signin2" data-width="200" data-height="30" data-longtitle="true">
-                </div>
-                <div class="row" style="margin-top:2%;">
-				<button class="loginBtn loginBtn--google">
-					Login with Google
-			</button>
-                </div>
-              </div>
+
             </div>
         </div>
             
@@ -233,290 +229,42 @@
 			  </div>
   </div>
 </div>
-    <!-- Page Content -->
-    
-        <!-- /.row -->
 
-        <!-- Portfolio Section -->
-        
-        <!-- /.row -->
-
-        <!-- Features Section -->
-       
-        <!-- /.row -->
-
-       
-
-   
-	
-			<div class="container main-container">
-
+  <div class="container main-container">
   <div role="tabpanel">
 
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
       <li role="presentation" class="active"><a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#panel-1" aria-controls="panel-1" role="tab" data-toggle="tab">當日主題</a></li>
       <li role="presentation"><a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#panel-2" aria-controls="panel-2" role="tab" data-toggle="tab">熱門主題</a></li>
+      
       <a href="{% url 'upload' %}">  <button type="button" class="btn btn-primary" style="float:right; width:80px; ">New Post</button></a>
+     
       
 	 </ul>
 	
     <!-- Tab panes -->
     <div class="tab-content">
-
       <div role="tabpanel" class="tab-pane active" id="panel-1">
         <div class="row masonry-container" style="position: relative; height: 956px;">
+         
+         {% for img in imgs %}
+          <div class="col-md-4 col-sm-6 item" >
+            <div class="thumbnail">
+             <img src='{{ img.img.url }}' alt="">
+              <div class="caption">
+                <h3>{{img.tit}}</h>
+                <h5>{{img.des}}</h>
+                <p><a href="{% url 'add' img.pk %}" class="btn btn-default" role="button">Views</a></p>
+              </div>
+            </div>
+          </div><!--/.item  -->
+          {%endfor%}
           
-          <div class="col-md-4 col-sm-6 item" style="position: absolute; left: 0px; top: 0px;">
-            <div class="thumbnail">
-              <img src="{% static 'images/fur2.jpg' %}" alt="">
-              <div class="caption">
-                <h3>瑞典的質感日常</h3>
-                <p>北歐風最讓人著迷之處便是那簡單中呈現的不凡氣質，當地有個有趣單字「hygge」便是在形容這份獨特，中文可以解釋成舒服、愜意，但其實就是指一種情境上的美好舒適... </p>
-                <p><a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#" class="btn btn-default" role="button">Views</a></p>
-              </div>
-            </div>
-          </div><!--/.item  -->
-
-          <div class="col-md-4 col-sm-6 item" style="position: absolute; left: 390px; top: 0px;">
-            <div class="thumbnail">
-              <img src="{% static 'images/fur3.jpg' %}" alt="">
-              <div class="caption">
-                <h3>北歐風質感公寓</h3>
-                <p>家應該是生活中帶給我們最多幸福感的地方，從打開家門那一刻起心情瞬間輕鬆愉悅，外面世界充斥著壓力加上煩悶工作，就跟著甩掉的鞋子、亂丟的包包一起拋到九霄雲外吧！.....</p>
-                <p><a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#" class="btn btn-default" role="button">Views</a></p>
-              </div>
-            </div>
-          </div><!--/.item  -->
-
-          <div class="col-md-4 col-sm-6 item" style="position: absolute; left: 780px; top: 0px;">
-            <div class="thumbnail">
-              <img src="{% static 'images/fur1.jpg' %}" alt="">
-              <div class="caption">
-                <h3>單身質男小宅</h3>
-                <p>在外打拼租屋的單身男士們都如何佈置你的住屋處呢？其中黑色搭上未過多加工的天然建材，同時表現了粗獷質感與舒適氛圍，便受到許多屋主們喜愛...</p>
-                <p><a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#" class="btn btn-default" role="button">Views</a></p>
-              </div>
-            </div>
-          </div><!--/.item  -->
           
-          <div class="col-md-4 col-sm-6 item" style="position: absolute; left: 390px; top: 500px;">
-           <div class="thumbnail">
-              <img src="{% static 'images/fur1.jpg' %}" alt="">
-              <div class="caption">
-                <h3>單身質男小宅</h3>
-                <p>在外打拼租屋的單身男士們都如何佈置你的住屋處呢？其中黑色搭上未過多加工的天然建材，同時表現了粗獷質感與舒適氛圍，便受到許多屋主們喜愛...</p>
-                <p><a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#" class="btn btn-default" role="button">Views</a></p>
-              </div>
-            </div>
-          </div><!--/.item  -->
-
-          <div class="col-md-4 col-sm-6 item" style="position: absolute; left: 0px; top: 500px;">
-           <div class="thumbnail">
-              <img src="{% static 'images/fur1.jpg' %}" alt="">
-              <div class="caption">
-                <h3>單身質男小宅</h3>
-                <p>在外打拼租屋的單身男士們都如何佈置你的住屋處呢？其中黑色搭上未過多加工的天然建材，同時表現了粗獷質感與舒適氛圍，便受到許多屋主們喜愛...</p>
-                <p><a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#" class="btn btn-default" role="button">Views</a></p>
-              </div>
-            </div>
-          </div><!--/.item  -->
-
-          <div class="col-md-4 col-sm-6 item" style="position: absolute; left: 780px; top: 500px;">
-            <div class="thumbnail">
-              <img src="{% static 'images/fur1.jpg' %}" alt="">
-              <div class="caption">
-                <h3>單身質男小宅</h3>
-                <p>在外打拼租屋的單身男士們都如何佈置你的住屋處呢？其中黑色搭上未過多加工的天然建材，同時表現了粗獷質感與舒適氛圍，便受到許多屋主們喜愛...</p>
-                <p><a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#" class="btn btn-default" role="button">Views</a></p>
-              </div>
-            </div>
-          </div>
-        </div> <!--/.masonry-container  -->
-      </div><!--/.tab-panel -->
-
-      <div role="tabpanel" class="tab-pane" id="panel-2">
-         <div class="row masonry-container" style="position: relative; height: 956px;">
-          
-          <div class="col-md-4 col-sm-6 item" style="position: absolute; left: 0px; top: 0px;">
-            <div class="thumbnail">
-              <img src="{% static 'images/fur2.jpg' %}" alt="">
-              <div class="caption">
-                <h3>瑞典的質感日常</h3>
-                <p>北歐風最讓人著迷之處便是那簡單中呈現的不凡氣質，當地有個有趣單字「hygge」便是在形容這份獨特，中文可以解釋成舒服、愜意，但其實就是指一種情境上的美好舒適... </p>
-                <p><a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#" class="btn btn-default" role="button">Views</a></p>
-              </div>
-            </div>
-          </div><!--/.item  -->
-
-          <div class="col-md-4 col-sm-6 item" style="position: absolute; left: 390px; top: 0px;">
-            <div class="thumbnail">
-              <img src="{% static 'images/fur3.jpg' %}" alt="">
-              <div class="caption">
-                <h3>北歐風質感公寓</h3>
-                <p>家應該是生活中帶給我們最多幸福感的地方，從打開家門那一刻起心情瞬間輕鬆愉悅，外面世界充斥著壓力加上煩悶工作，就跟著甩掉的鞋子、亂丟的包包一起拋到九霄雲外吧！.....</p>
-                <p><a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#" class="btn btn-default" role="button">Views</a></p>
-              </div>
-            </div>
-          </div><!--/.item  -->
-
-          <div class="col-md-4 col-sm-6 item" style="position: absolute; left: 780px; top: 0px;">
-            <div class="thumbnail">
-              <img src="{% static 'images/fur1.jpg' %}" alt="">
-              <div class="caption">
-                <h3>單身質男小宅</h3>
-                <p>在外打拼租屋的單身男士們都如何佈置你的住屋處呢？其中黑色搭上未過多加工的天然建材，同時表現了粗獷質感與舒適氛圍，便受到許多屋主們喜愛...</p>
-                <p><a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#" class="btn btn-default" role="button">Views</a></p>
-              </div>
-            </div>
-          </div><!--/.item  -->
           
         </div> <!--/.masonry-container  -->
-        
-      </div><!--/.tab-panel -->
-
-      <div role="tabpanel" class="tab-pane" id="panel-3">
-        <div class="row masonry-container" style="position: relative; height: 0px;">
-
-          <div class="col-md-4 col-sm-6 item" style="position: absolute; left: 0px;">
-            <div class="thumbnail">
-              <img src="{% static 'css/panelcss/nature' %}" alt="">
-              <div class="caption">
-                <h3>Thumbnail label</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
-                <p><a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#" class="btn btn-primary" role="button">Button</a> <a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#" class="btn btn-default" role="button">Button</a></p>
-              </div>
-            </div>
-          </div><!--/.item  -->
-
-          <div class="col-md-4 col-sm-6 item" style="position: absolute; left: 0px;">
-            <div class="thumbnail">
-              <div class="caption">
-                <h3>Thumbnail label</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, illum voluptates consectetur consequatur ducimus. Necessitatibus, nobis consequatur hic eaque laborum laudantium. Adipisci, explicabo, asperiores molestias deleniti unde dolore enim quas.</p>
-                <p><a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#" class="btn btn-primary" role="button">Button</a> <a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#" class="btn btn-default" role="button">Button</a></p>
-              </div>
-            </div>
-          </div><!--/.item  -->
-
-          <div class="col-md-4 col-sm-6 item" style="position: absolute; left: 0px;">
-            <div class="thumbnail">
-              <img src="{% static 'css/panelcss/nature' %}" alt="">
-              <div class="caption">
-                <h3>Thumbnail label</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, illum voluptates consectetur consequatur ducimus. Necessitatibus, nobis consequatur hic eaque laborum laudantium. Adipisci, explicabo, asperiores molestias deleniti unde dolore enim quas.</p>
-                <p><a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#" class="btn btn-primary" role="button">Button</a> <a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#" class="btn btn-default" role="button">Button</a></p>
-              </div>
-            </div>
-          </div><!--/.item  -->
-
-          <div class="col-md-4 col-sm-6 item" style="position: absolute; left: 0px;">
-            <div class="thumbnail">
-              <img src="{% static 'css/panelcss/nature' %}" alt="">
-              <div class="caption">
-                <h3>Thumbnail label</h3>
-                <p><a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#" class="btn btn-primary" role="button">Button</a> <a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#" class="btn btn-default" role="button">Button</a></p>
-              </div>
-            </div>
-          </div><!--/.item  -->
-
-          <div class="col-md-4 col-sm-6 item" style="position: absolute; left: 0px;">
-            <div class="thumbnail">
-              <img src="{% static 'css/panelcss/nature' %}" alt="">
-              <div class="caption">
-                <h3>Thumbnail label</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, illum voluptates consectetur consequatur ducimus. Necessitatibus, nobis consequatur hic eaque laborum laudantium. Adipisci, explicabo, asperiores molestias deleniti unde dolore enim quas.</p>
-                <p><a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#" class="btn btn-primary" role="button">Button</a> <a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#" class="btn btn-default" role="button">Button</a></p>
-              </div>
-            </div>
-          </div><!--/.item  -->
-
-          <div class="col-md-4 col-sm-6 item" style="position: absolute; left: 0px;">
-            <div class="thumbnail">
-              <img src="{% static 'css/panelcss/nature' %}" alt="">
-              <div class="caption">
-                <h3>Thumbnail label</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, illum voluptates consectetur consequatur ducimus. Necessitatibus, nobis consequatur hic eaque laborum laudantium. Adipisci, explicabo, asperiores molestias deleniti unde dolore enim quas.</p>
-                <p><a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#" class="btn btn-primary" role="button">Button</a> <a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#" class="btn btn-default" role="button">Button</a></p>
-              </div>
-            </div>
-          </div>
-
-        </div> <!--/.masonry-container  -->
-      </div><!--/.tab-panel -->
-
-      <div role="tabpanel" class="tab-pane" id="panel-4">
-        <div class="row masonry-container" style="position: relative; height: 0px;">
-
-          <div class="col-md-4 col-sm-6 item" style="position: absolute; left: 0px;">
-            <div class="thumbnail">
-              <img src="{% static 'css/panelcss/cats' %}" alt="">
-              <div class="caption">
-                <h3>Thumbnail label</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
-                <p><a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#" class="btn btn-primary" role="button">Button</a> <a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#" class="btn btn-default" role="button">Button</a></p>
-              </div>
-            </div>
-          </div><!--/.item  -->
-
-          <div class="col-md-4 col-sm-6 item" style="position: absolute; left: 0px;">
-            <div class="thumbnail">
-              <div class="caption">
-                <h3>Thumbnail label</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, illum voluptates consectetur consequatur ducimus. Necessitatibus, nobis consequatur hic eaque laborum laudantium. Adipisci, explicabo, asperiores molestias deleniti unde dolore enim quas.</p>
-                <p><a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#" class="btn btn-primary" role="button">Button</a> <a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#" class="btn btn-default" role="button">Button</a></p>
-              </div>
-            </div>
-          </div><!--/.item  -->
-
-          <div class="col-md-4 col-sm-6 item" style="position: absolute; left: 0px;">
-            <div class="thumbnail">
-              <img src="{% static 'css/panelcss/cats'% }" alt="">
-              <div class="caption">
-                <h3>Thumbnail label</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, illum voluptates consectetur consequatur ducimus. Necessitatibus, nobis consequatur hic eaque laborum laudantium. Adipisci, explicabo, asperiores molestias deleniti unde dolore enim quas.</p>
-                <p><a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#" class="btn btn-primary" role="button">Button</a> <a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#" class="btn btn-default" role="button">Button</a></p>
-              </div>
-            </div>
-          </div><!--/.item  -->
-
-          <div class="col-md-4 col-sm-6 item" style="position: absolute; left: 0px;">
-            <div class="thumbnail">
-              <img src="{% static 'css/panelcss/cats' %}" alt="">
-              <div class="caption">
-                <h3>Thumbnail label</h3>
-                <p><a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#" class="btn btn-primary" role="button">Button</a> <a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#" class="btn btn-default" role="button">Button</a></p>
-              </div>
-            </div>
-          </div><!--/.item  -->
-
-          <div class="col-md-4 col-sm-6 item" style="position: absolute; left: 0px;">
-            <div class="thumbnail">
-              <img src="{% static 'css/panelcss/cats' %}" alt="">
-              <div class="caption">
-                <h3>Thumbnail label</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, illum voluptates consectetur consequatur ducimus. Necessitatibus, nobis consequatur hic eaque laborum laudantium. Adipisci, explicabo, asperiores molestias deleniti unde dolore enim quas.</p>
-                <p><a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#" class="btn btn-primary" role="button">Button</a> <a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#" class="btn btn-default" role="button">Button</a></p>
-              </div>
-            </div>
-          </div><!--/.item  -->
-
-          <div class="col-md-4 col-sm-6 item" style="position: absolute; left: 0px;">
-            <div class="thumbnail">
-              <img src="{% static 'css/panelcss/cats' %}" alt="">
-              <div class="caption">
-                <h3>Thumbnail label</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, illum voluptates consectetur consequatur ducimus. Necessitatibus, nobis consequatur hic eaque laborum laudantium. Adipisci, explicabo, asperiores molestias deleniti unde dolore enim quas.</p>
-                <p><a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#" class="btn btn-primary" role="button">Button</a> <a href="http://s.codepen.io/boomerang/2d28caf3f81b650155d0abddd83b7fc81482049895343/index.html#" class="btn btn-default" role="button">Button</a></p>
-              </div>
-            </div>
-          </div>
-
-        </div> <!--/.masonry-container  -->
-      </div><!--/.tab-panel -->
-
-    </div> <!--/.tab-content -->
-
+      </div><!--/.tab-panel -->
   </div> <!--/.tab-panel  -->
 
 </div>
@@ -539,17 +287,7 @@
 			</div>
 		</div>
 	</div>
-
-                
-					</div>
-					
-				</div>
-				<div class="col-md-2"></div>
-			</div>
-		</header>
-		
-	</div>
-
+  </div>
 
 <script type="text/javascript">
 
