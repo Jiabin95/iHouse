@@ -1,0 +1,191 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<!-- Website template by freewebsitetemplates.com -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="homelogo1.png">
+	<script src="{% static 'css/panelcss/console_runner-5710c30fb566082d9fcb6e7d97ee7e3f2a326128c9f334a4231b6fd752b29965.js.download' %}"></script>
+	<script src="{% static 'css/panelcss/events_runner-d5e4bf42585b8da8c18f7d963dbfc17cd66a79aa586c9448c4de8d6952ee9d97.js.download' %}"></script>
+	<script src="{% static 'css/panelcss/css_live_reload_init-25d1423d5d6fb975e7d61832d2c061422a94963ca446583b965dfc5569147311.js.download' %}"></script>
+	<script src="{%static 'js/console_runner-5710c30fb566082d9fcb6e7d97ee7e3f2a326128c9f334a4231b6fd752b29965.js.download' %}"></script>
+	<script src="{%static 'js/events_runner-d5e4bf42585b8da8c18f7d963dbfc17cd66a79aa586c9448c4de8d6952ee9d97.js.download' %}"></script>
+	<script src="{%static 'js/css_live_reload_init-25d1423d5d6fb975e7d61832d2c061422a94963ca446583b965dfc5569147311.js.download' %}"></script>
+	<meta name="robots" content="noindex">
+			<script type ="text/javascript" src="{% static 'js/panel.js' %}"></script>
+		<link rel="stylesheet" href="{% static 'css/panelcss/panel.css' %}" type="text/css">
+	<script type="text/javascript" src="{%static 'js/login.js' %}"></script>
+	<link rel="stylesheet" type="text/css" href="{%static 'css/fb.css' %}">
+	<link rel="stylesheet" type="text/css" href="{%static 'css/login.css' %}">
+	
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+	
+	<link rel="canonical" href="http://codepen.io/SitePoint/pen/mywEMR">
+
+	<link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+	<link rel="stylesheet prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+	
+	<link rel="stylesheet" type="text/css" href="{%static 'css/profile.css' %}">
+	
+	 <!-- Bootstrap Core CSS -->
+    <link href="{%static 'css/bootstrap.min.css' %}" rel="stylesheet">
+	
+    <!-- Custom CSS -->
+    <link href="{%static 'css/modern-business.css '%}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="{%static 'css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="{%static 'css/style.css' %}" type="text/css">
+	<link rel="stylesheet" href="{%static 'css/profilepic.css' %}" type="text/css">
+</head>
+<body>
+<div class="header">
+		<div>
+			<a href="{% url 'index'%}" id="logo"><img src="{% static 'images/homelogo1.png' %}" alt="logo"></a>
+			<ul>
+				<li class="selected">
+					<a href="index.html">Home</a>
+				</li>
+				<li>
+					<a href="about.html">居家空間</a>
+										<ul>
+						<li>
+							<a href="{% url 'space' "liv" %}">客廳</a>
+						</li>
+						<li>
+							<a href="{% url 'space' "bath" %}">浴室</a>
+						</li>
+						<li>
+							<a href="{% url 'space' "kit" %}">廚房</a>
+						</li>
+						<li>
+							<a href="{% url 'space' "book" %}">書房</a>
+						</li>
+						<li>
+							<a href="{% url 'space' "bed" %}">臥室</a>
+						</li>
+						<li>
+							<a href="{% url 'space' "dinner" %}">餐廳</a>
+						</li>
+						<li>
+							<a href="{% url 'space' "bal" %}">陽台</a>
+						</li>
+						<li>
+							<a href="{% url 'space' "store" %}">储藏室</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="collections.html">家具</a>
+					<ul>
+						<li>
+							<a href="collections.html">椅子</a>
+						</li>
+						<li>
+							<a href="collections.html">櫃子</a>
+						</li>
+						<li>
+							<a href="collections.html">桌子</a>
+						</li>
+						<li>
+							<a href="collections.html">沙發</a>
+						</li>
+						<li>
+							<a href="collections.html">檯燈</a>
+						</li>
+						<li>
+							<a href="collections.html">DIY 家具</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+						<a href="{% url 'profile'%}">個人空間</a>
+				</li>
+
+				<li>
+				<!--{% if user.is_authenticated %}!-->
+				<img id="picture" src="">
+				   <button id="fb-login"onclick="document.getElementById('id01').style.display='block'" style="width:auto;"><!--{{ user.username }}!--></button>
+        <!--{% else %}!-->
+        <img id="picture" src="">
+				   <button id="fb-login"onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+				<!--{%endif%} !-->
+        <li><a href="javascript: return false;" onclick="window.location.href='/logout/' ">登出</a></li>
+
+				</li>
+			
+			</ul>
+			
+		</div>
+	</div>
+<div class="container">
+	<div class="innerwrap">
+		<section class="section1 clearfix">
+			<div>
+				<div class="row grid clearfix">
+					<div class="col2 first">
+						
+						<img src="./david_beckham_1133321.jpg" alt="">
+						<h1>Valliu</h1>
+						<p>喜歡擺設家具，常常把家裡的家具擺出自己的風格，有空才來看看，謝謝</p>
+						<span>Follow</span>
+					</div>
+					<div class="col2 last">
+						<div class="grid clearfix">
+							<div class="col3 first">
+								<h1>2</h1>
+								<span><i class="fa fa-list-alt"></i>My posts</span>
+							</div>
+							<div class="col3"><h1>3</h1>
+							<span>Likes</span></div>
+							<div class="col3 last"><h1>15</h1>
+							<span>Bookmarks</span></div>
+						</div>
+					</div>
+				</div>
+				<!--<div class="row clearfix">
+					<ul class="row2tab clearfix">
+						<li><i class="fa fa-list-alt"></i> My posts </li>
+						<li><i class="fa fa-heart"></i> My likes </li>
+						<li><i class="fa fa-check"></i> Following </li>
+						<li><i class="fa fa-thumbs-o-up "></i> Suggestions </li>
+					</ul>
+				</div>!-->
+			</div>
+			<span class="smalltri">
+			<i class="fa fa-star"></i>
+			</span>
+		</section>
+		<section class="section2 clearfix">
+		</section>
+	</div>
+</div>	
+	    <!-- Tab panes -->
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="panel-1">
+        <div class="row masonry-container" style="position: relative; height: 956px;">
+         
+         {% for img in imgs %}
+          <div class="col-md-4 col-sm-6 item" >
+            <div class="thumbnail">
+             <img src='{{ img.img.url }}' alt="">
+             {{ contact.name }}
+              <div class="caption">
+                <h3><a href="{% url 'comment' img.pk %}">{{img.tit}}</a></h>
+                <h5>{{img.des}}</h5>
+                <p><a href="{% url 'comment' img.pk %}" class="btn btn-default" role="button">閱讀更多<i class="fa fa-angle-right"></i></a></p>
+              </div>
+            </div>
+          </div><!--/.item  -->
+          {%endfor%}
+          
+          
+          
+        </div> <!--/.masonry-container  -->
+      </div><!--/.tab-panel -->
+  </div> <!--/.tab-panel  -->
+
+	
+<html>

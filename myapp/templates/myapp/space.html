@@ -1,0 +1,213 @@
+{% load staticfiles %}
+<html>
+    
+    <html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>iHouse - space</title>
+	<script type="text/javascript" src="{% static 'js/login.js' %}"></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/fb.css' %}">
+  	<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+	<!-- Bootstrap Core CSS -->
+    <link href="{% static 'css/bootstrap.min1.css' %}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{% static 'css/modern-business1.css' %}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="{% static 'font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+	
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'css/bootstrap.min1.css' %}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{% static 'css/shop-homepage1.css' %}" rel="stylesheet">
+	<link href="{% static 'css/bootstrap1.css' %}" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	<link rel="stylesheet" href="{% static 'css/style1.css' %}" type="text/css">
+</head>
+
+<body>
+<div class="header">
+		<div>
+			<a href="{% url 'index'%}" id="logo"><img src="{% static 'images/homelogo1.png' %}" alt="logo"></a>
+			<ul>
+          <li>
+			 <a href="{% url 'upload' %}">  <button type="button" class="btn btn-primary" style="width:90px; color:white; margin:-50px 20px;">發布貼文</button></a>
+				  </li>
+				<li>
+					<a href="about.html">居家空間</a>
+										<ul>
+						<li>
+							<a href="{% url 'space' "liv" %}">客廳</a>
+						</li>
+						<li>
+							<a href="{% url 'space' "bath" %}">浴室</a>
+						</li>
+						<li>
+							<a href="{% url 'space' "kit" %}">廚房</a>
+						</li>
+						<li>
+							<a href="{% url 'space' "book" %}">書房</a>
+						</li>
+						<li>
+							<a href="{% url 'space' "bed" %}">臥室</a>
+						</li>
+						<li>
+							<a href="{% url 'space' "dinner" %}">餐廳</a>
+						</li>
+						<li>
+							<a href="{% url 'space' "bal" %}">陽台</a>
+						</li>
+						<li>
+							<a href="{% url 'space' "store" %}">储藏室</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="collections.html">家具</a>
+					<ul>
+						<li>
+							<a href="collections.html">椅子</a>
+						</li>
+						<li>
+							<a href="collections.html">櫃子</a>
+						</li>
+						<li>
+							<a href="collections.html">桌子</a>
+						</li>
+						<li>
+							<a href="collections.html">沙發</a>
+						</li>
+						<li>
+							<a href="collections.html">檯燈</a>
+						</li>
+						<li>
+							<a href="collections.html">DIY 家具</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="{% url 'profile'%}">個人空間</a>
+				</li>
+
+				<li>
+				{% if user.is_authenticated %}
+				<img id="picture" src="">
+				   <button id="fb-login"onclick="document.getElementById('id01').style.display='block'" style="width:auto;">{{ user.username }}</button>
+        {% else %}
+        <img id="picture" src="">
+				   <button id="fb-login"onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+				{%endif%} 
+        <li><a href="javascript: return false;" onclick="window.location.href='/logout/' ">登出</a></li>
+
+				</li>
+			
+			</ul>
+			
+		</div>
+	</div>	
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-3">
+               <br><br><br>
+                <div class="list-group">
+                    <a href="{% url 'space' "liv" %}" class="list-group-item">客廳</a>
+                    <a href="{% url 'space' "bath" %}" class="list-group-item">浴室</a>
+                    <a href="{% url 'space' "kit" %}" class="list-group-item">廚房</a>
+					<a href="{% url 'space' "book" %}" class="list-group-item">書房</a>
+                    <a href="{% url 'space' "bed" %}" class="list-group-item">臥室</a>
+                    <a href="{% url 'space' "dinner" %}" class="list-group-item">餐廳</a>
+					<a href="{% url 'space' "bal" %}" class="list-group-item">陽台</a>
+                    <a href="{% url 'space' "store" %}" class="list-group-item">儲藏室</a>
+                 
+                </div>
+            </div>
+
+            <div class="col-md-9">
+
+                
+                
+                
+                <br><br><br>
+				 {% for img in imgs %}
+				
+				
+			 <div class="col-md-4 col-sm-6 item" >
+            <div class="thumbnail">
+             <img src='{{ img.img.url }}' alt="">
+              <div class="caption">
+                <h3><a href="{% url 'comment' img.pk %}">{{img.tit}}</a></h>
+                <h5>{{img.des}}</h5>
+                <p><a href="{% url 'comment' img.pk %}" class="btn btn-default" role="button">閱讀更多<i class="fa fa-angle-right"></i></a></p>
+              </div>
+            </div>
+          </div><!--/.item  -->
+{% endfor %}
+            </div>
+				
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+    <div class="container">
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="{% static 'js/jquery1.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'js/bootstrap.min1.js' %}"></script>
+
+</body>
+
+</html>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+   

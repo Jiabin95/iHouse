@@ -16,7 +16,9 @@
     <script type="text/javascript" src="{% static 'js/like.js' %}"></script>
 	<link rel="stylesheet" type="text/css" href="{% static 'css/fb.css' %}">
   	<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
-
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
 	<link rel="canonical" href="http://codepen.io/SitePoint/pen/mywEMR">
 	<link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/like.css' %}">
@@ -52,7 +54,8 @@
 </script>
 	<div class="header">
 		<div>
-			<a href="index.html" id="logo"><img src="{% static 'images/homelogo1.png' %}" alt="logo"></a>
+			<a href="{% url 'index'%}" id="logo"><img src="{% static 'images/homelogo1.png' %}" alt="logo"></a>
+			
 			<ul>
 				<li class="selected">
 					<a href="index.html">Home</a>
@@ -60,29 +63,29 @@
 				<li>
 					<a href="about.html">居家空間</a>
 										<ul>
-						<li>
-							<a href="collections.html">客廳</a>
+					<li>
+							<a href="{% url 'space' "liv" %}">客廳</a>
 						</li>
 						<li>
-							<a href="collections.html">浴室</a>
+							<a href="{% url 'space' "bath" %}">浴室</a>
 						</li>
 						<li>
-							<a href="collections.html">廚房</a>
+							<a href="{% url 'space' "kit" %}">廚房</a>
 						</li>
 						<li>
-							<a href="collections.html">書房</a>
+							<a href="{% url 'space' "book" %}">書房</a>
 						</li>
 						<li>
-							<a href="collections.html">臥室</a>
+							<a href="{% url 'space' "bed" %}">臥室</a>
 						</li>
 						<li>
-							<a href="collections.html">餐廳</a>
+							<a href="{% url 'space' "dinner" %}">餐廳</a>
 						</li>
 						<li>
-							<a href="collections.html">陽台</a>
+							<a href="{% url 'space' "bal" %}">陽台</a>
 						</li>
 						<li>
-							<a href="collections.html">储藏室</a>
+							<a href="{% url 'space' "store" %}">储藏室</a>
 						</li>
 					</ul>
 				</li>
@@ -110,16 +113,22 @@
 					</ul>
 				</li>
 				<li>
-					<a href="blog.html">個人空間</a>
+						<a href="{% url 'profile'%}">個人空間</a>
 				</li>
-
+				
 				<li>
-					
-			    <img id="picture" src="">	
-				<button id="fb-login"onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
-
+				{% if user.is_authenticated %}
+				    <img id="picture" src="">
+				       <button id="fb-login"onclick="document.getElementById('id01').style.display='block'" style="width:auto;">{{ user.username }}</button>
+                {% else %}
+                        <img id="picture" src="">
+				       <button id="fb-login"onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+				{%endif%} 
+				 
+				</li><li><a href="javascript: return false;" onclick="window.location.href='/logout/' ">登出</a></li>
+			<li>
+				
 				</li>
-			
 			</ul>
 			
 		</div>
@@ -139,28 +148,19 @@
             <div class="row">
               <div class="col-md-6 formbor">
                 <div class="col-md-offset-1">
-                   <form method="post" name="signn" role="form" class="form-horizontal">
-                     <div class="form-group">
-                      <label for="email" class="col-md-3 control-label">Email:</label>
-                      <div class="col-md-8">
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Enter Your mail:" required>
-                      </div>
-                     </div>
-                     <div class="form-group">
-                           <label for="pass" class="col-md-3 control-label">Password:</label>
-                        <div class="col-md-8">
-                           <input type="password" class="form-control" name="pass" id="pass" Placeholder="Enter your Password:" required>
-                        </div>
-                     </div>
-                     <div class="form-group">
-                       <label for="pass" class="col-md-3 control-label"></label>
-                       <div class="col-md-8">
-                          <p class="text-right"><a href="#">Forget Password ?</a></p>
-                       </div>
-                     </div>
-                     <input type="submit" value="signin" id="signin" class="btn btn-default center-block">
-					
-                   </form>
+                  {% block content %}
+    {% if form.errors %}
+        <p>Your username and password didn't match. Please try again.</p>
+    {% endif %}
+    <form class="form" method="post" action="{% url 'django.contrib.auth.views.login' %}" >{% csrf_token %}
+        <input type="text" placeholder="Username" name="username">
+        <input type="password" placeholder="Password" name="password">
+        <button type="submit"  value="Login" id="login-button">Login</button>
+        <button type="button" onclick="window.location.href='/register/' ">Register</button>
+        
+    </form>
+
+{% endblock %}
                   </div>
               </div>
               <div class="col-md-6 text-center">
@@ -168,20 +168,7 @@
                 <div class="row">
                 <div class="btn btn-lg fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="false"></div>
               </div>
-                <div class="row">
-				 <button class="loginBtn loginBtn--facebook">
-					Login with Facebook
-				</button>
-                </div>
-                <div class="row">
-                  <div class="col-md-offset-3 g-signin2" data-width="200" data-height="30" data-longtitle="true">
-                </div>
-                <div class="row" style="margin-top:2%;">
-				<button class="loginBtn loginBtn--google">
-					Login with Google
-			</button>
-                </div>
-              </div>
+                
             </div>
         </div>
             
@@ -206,30 +193,17 @@
 
             
             <div class="col-md-8">
-                
-                <img  style = "width : 600px height :600px" class="img-responsive" src='{{ img.img.url }}' />
-                
-                
+                <img  style = "width : 600px height :600px" class="img-responsive" src='{{ img_ifo.img.url }}' />
             </div>
-
             <div class="col-md-4">
-                <h1>{{img.tit}}</h>
-                <h3>{{img.des}}</h>
+                <h1>{{img_ifo.tit}}</h>
+                <h3>{{img_ifo.des}}</h>
                 <ul>
-                   
+                    
                 </ul>
             </div>
-          
-
         </div>
-
-					<span class="like-text">Like</span>
-					<div class="heart ">
-					</div>
-					<span class="like-count">2</span>
-					
-
-  <h1>留言</h1>
+<h1>留言</h1><br>
   
   <!-- From -->
  
@@ -239,11 +213,11 @@
       <img src="http://lorempixel.com/200/200/people">
     </div>
     
-    <form id="add-contact-form" class="form" action="{% url 'add' img_id %}" method="POST" role="form">
+    <form id="add_story_form" class="form" action="{url 'comment' img_ifo.pk}" method="POST" role="form">
       {% csrf_token %}
       {{ form.as_p }}
       <div class="form-row">
-        <textarea class="input" ng-model="cmntCtrl.comment.text" placeholder="Add comment..." name="name" id="name" required></textarea>
+        <textarea class="input" ng-model="cmntCtrl.comment.text" placeholder="Add comment..." name="context" id="context" required></textarea>
       </div>
       
     <div class="form-row">
@@ -254,78 +228,42 @@
 
 
 
-<div class="comments">  
-     
-    {% for contact in contacts %}
+<div class="comments" id="refresh_this">  
+
+    {% for contact in comment %}
 
     <!-- Comment - Dummy -->
     <div class="comment">
       <!-- Comment Avatar -->
       <div class="comment-avatar">
-        <img src="http://gravatar.com/avatar/412c0b0ec99008245d902e6ed0b264ee?s=80">
+     
       </div>
     <!-- Comment Box -->
       <div class="comment-box">
-        <div class="comment-text">{{ contact.name }}</div>
+        <div class="comment-text">{{ contact.comment }}</div>
         <div class="comment-footer">
-          <div class="comment-info">
+          <div class="comment-info" id="no_refresh">
             <span class="comment-author">
-              <a href="mailto:sexar@pagelab.io">Sexar</a>
+              <a href="">{{ contact.name }}</a>
             </span>
-            <span class="comment-date">Feb 2, 2013 11:32:04 PM</span>
+            <span class="comment-date">{{ contact.time }}</span>
           </div>
 
         </div>
       </div>
     </div>
     {%  endfor %}
+    
 </div>
+
+  <button id="share-button2" style="background-color:#0270DD;"  >share</button>
+      
+
+      
     
 
-
-
-  <!--
-  <div class="comments">
-
-
-  
-    <div class="comment">
-    
-      <div class="comment-avatar">
-        <img src="http://gravatar.com/avatar/412c0b0ec99008245d902e6ed0b264ee?s=80">
-      </div>
-
-
-      <div class="comment-box">
-        <div class="comment-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto temporibus iste nostrum dolorem natus recusandae incidunt voluptatum.</div>
-        <div class="comment-footer">
-          <div class="comment-info">
-            <span class="comment-author">
-              <a href="mailto:sexar@pagelab.io">Sexar</a>
-            </span>
-            <span class="comment-date">Feb 2, 2013 11:32:04 PM</span>
-          </div>
-
-          <div class="comment-actions">
-            <a href="#">Reply</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-   
-    <div class="comment">
-      
-      
-
-      
-    </div>
-  </div>
-
-</div> -->
         
 
-        <!-- Related Projects Row -->
         <div class="row">
 
             <div class="col-lg-12">
@@ -417,8 +355,18 @@ var loginCheck = function(){
 $("#my-button").click(function(){
   loginCheck();
 });
+
+var sharing = function(){
+  FB.ui({
+    method: 'share',
+    href: window.location.href,
+  },function(response){});
+}
+$("#share-button2").click(function(){
+    sharing();
+});
 </script>
-</script>	
+<script src="{% static 'js/refresh.js' %}"></script>
 </body>
 
 </html>
