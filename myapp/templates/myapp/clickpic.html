@@ -13,7 +13,6 @@
 	<meta charset="UTF-8">
 
     <script type="text/javascript" src="{% static 'js/login.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/like.js' %}"></script>
 	<link rel="stylesheet" type="text/css" href="{% static 'css/fb.css' %}">
   	<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -21,7 +20,7 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
 	<link rel="canonical" href="http://codepen.io/SitePoint/pen/mywEMR">
 	<link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/like.css' %}">
+
 	<link rel="stylesheet" type="text/css" href="{% static 'css/add.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/comment.css' %}">
 	<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
@@ -52,18 +51,17 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 </script>
-	<div class="header">
+<div class="header">
 		<div>
 			<a href="{% url 'index'%}" id="logo"><img src="{% static 'images/homelogo1.png' %}" alt="logo"></a>
-			
 			<ul>
-				<li class="selected">
-					<a href="index.html">Home</a>
-				</li>
+          <li>
+			 <a href="{% url 'upload' %}">  <button type="button" class="btn btn-primary" style="width:90px; color:white; margin:-50px 20px;"><b>發布貼文</b></button></a>
+				  </li>
 				<li>
 					<a href="about.html">居家空間</a>
 										<ul>
-					<li>
+						<li>
 							<a href="{% url 'space' "liv" %}">客廳</a>
 						</li>
 						<li>
@@ -113,26 +111,25 @@
 					</ul>
 				</li>
 				<li>
-						<a href="{% url 'profile'%}">個人空間</a>
+					<a href="{% url 'profile'%}">個人空間</a>
 				</li>
-				
+
 				<li>
 				{% if user.is_authenticated %}
-				    <img id="picture" src="">
-				       <button id="fb-login"onclick="document.getElementById('id01').style.display='block'" style="width:auto;">{{ user.username }}</button>
-                {% else %}
-                        <img id="picture" src="">
-				       <button id="fb-login"onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+				<img id="picture" src="">
+				   <button id="fb-login"onclick="document.getElementById('id01').style.display='block'" style="width:auto;">{{ user.username }}</button>
+        {% else %}
+        <img id="picture" src="">
+				   <button id="fb-login"onclick="document.getElementById('id01').style.display='block'" style="width:auto;">登入</button>
 				{%endif%} 
-				 
-				</li><li><a href="javascript: return false;" onclick="window.location.href='/logout/' ">登出</a></li>
-			<li>
-				
+        <li><a href="javascript: return false;" onclick="window.location.href='/logout/' ">登出</a></li>
+
 				</li>
+			
 			</ul>
 			
 		</div>
-</div>
+	</div>	
 <div id="id01" class="modal">
   
    <div class="modal-dialog modal-lg">
@@ -193,7 +190,7 @@
 
             
             <div class="col-md-8">
-                <img  style = "width : 600px height :600px" class="img-responsive" src='{{ img_ifo.img.url }}' />
+                <img  width : "600px" height :"600px" class="img-responsive" src='{{ img_ifo.img.url }}' />
             </div>
             <div class="col-md-4">
                 <h1>{{img_ifo.tit}}</h>
@@ -203,6 +200,8 @@
                 </ul>
             </div>
         </div>
+        <br>
+        <button id="share-button2" style="background-color:#397BC6; width:10%; height:5%"img src="{% static 'images/share.png' %}">share</button>
 <h1>留言</h1><br>
   
   <!-- From -->
@@ -256,7 +255,7 @@
     
 </div>
 
-  <button id="share-button2" style="background-color:#0270DD;"  >share</button>
+  
       
 
       

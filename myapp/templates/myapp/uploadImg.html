@@ -27,7 +27,7 @@
 			<a href="{% url 'index'%}" id="logo"><img src="{% static 'images/homelogo1.png' %}" alt="logo"></a>
 			<ul>
           <li>
-			 <a href="{% url 'upload' %}">  <button type="button" class="btn btn-primary" style="width:90px; color:white; margin:-50px 20px; background-color:blue;">發布貼文</button></a>
+			 <a href="{% url 'upload' %}">  <button type="button" class="btn btn-primary" style="width:90px; color:white; margin:-50px 20px;"><b>發布貼文</b></button></a>
 				  </li>
 				<li>
 					<a href="about.html">居家空間</a>
@@ -91,7 +91,7 @@
 				   <button id="fb-login"onclick="document.getElementById('id01').style.display='block'" style="width:auto;">{{ user.username }}</button>
         {% else %}
         <img id="picture" src="">
-				   <button id="fb-login"onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+				   <button id="fb-login"onclick="document.getElementById('id01').style.display='block'" style="width:auto;">登入</button>
 				{%endif%} 
         <li><a href="javascript: return false;" onclick="window.location.href='/logout/' ">登出</a></li>
 
@@ -133,7 +133,7 @@
 				
 				</p>
 				<p>
-					<label for="email"><b>照片描述:<textarea class="ttop text-area col-md-offset-2 col-md-8 col-xs-12" name="des" rows="5" cols="70" placeholder="描述你的照片..." maxlength="20"></textarea></b></label>
+					<label for="email"><b>照片描述:<textarea class="ttop text-area col-md-offset-2 col-md-8 col-xs-12" name="des" rows="5" cols="70" placeholder="描述你的照片..." maxlength="500"></textarea></b></label>
 				</p>
                 <button class="upload-btn" type="submit" >上傳</button>
       </form>     
